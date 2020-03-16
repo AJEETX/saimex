@@ -1,0 +1,90 @@
+<div class="top">
+  <i *ngIf="haserror" class="fa fa-warning error">{{error.error}}</i>
+    <div class="alignright">
+        <div class="nothing">  
+        </div>
+        <div class="welcome log nothing"> Welcome
+            <i class="fa fa-quote-left right left"></i>
+            <a [routerLink]="['/user']" class="farleft" >
+              {{user}}
+            </a>
+            <i class="fa fa-quote-right left"></i>
+          </div>
+      <div class="log">
+        <a [routerLink]="['/login']" class="farleft" ><i class="fa fa-power-off right"></i>Logout</a>
+      </div>
+      <svg viewBox="0 0 260 25" xmlns="http://www.w3.org/2000/svg">
+        <style>
+          #time-picker-wrapper #time-picker{margin: 10vh auto !important;}
+          .heavy { font: bold 10px sans-serif; }
+          .Rrrrr { fill: red; text-shadow: 1px 1px 1px grey;}
+        </style>
+      
+      
+        <text x="95" y="10" class="heavy">add</text>
+      
+        <text x="115" y="10" class="heavy Rrrrr">drive Offs</text>
+      </svg>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Vehicle registration number</label>
+    <input formControlName="name" type="text" id="name" placeholder="enter Vehicle registration number" name="name" class="form-control"  />
+  </div>
+  <div class="form-group">
+    <label for="time">Drive off time</label>
+    <input type="time" id="time" name="time" formControlName="time" atp-time-picker value="00:00" class="form-control" />
+  </div>   
+  <div class="form-group">
+    <label for="date">Drive off date</label>
+    <!-- <input type="date" id="date" name="date" class="form-control" formControlName="date" placeholder='Select a date' placeholder="dd-MMM-yyyy" max='maxDate'/> -->
+    <ng-datepicker id="date" name="date"  formControlName="date" ></ng-datepicker>
+    <!-- <ejs-datepicker id="date" name="date" formControlName="date" placeholder='Select a date' format ='dd-MMM-yyyy' [max]='maxDate'></ejs-datepicker> -->
+  </div> 
+  <div class="form-group">
+    <label id="danger">Drive Off:<input formControlName="watch" type="checkbox" id="watch" placeholder="is special" name="watch" class="form-control"  /></label>
+  </div>
+
+  <div class="form-group">
+    <label for="eventno">Event number</label>
+    <input type="text" id="eventno" formControlName="eventno" class="form-control" placeholder="enter event no" name="eventno" />
+  </div>
+  <div class="form-group">
+    <label for="amountlost">Amount</label>
+    <input type="number" id="amountlost" formControlName="amountlost" class="form-control" placeholder="enter money lost" name="amountlost" />
+  </div>  
+
+  <div class="form-group">
+    <label for="location">Location</label>
+    <ng-autocomplete
+    [data]="locations"
+    [searchKeyword]="keyword"
+    formControlName="location"
+    placeHolder="select location"
+    (selected)='selectEvent($event)'
+    (inputChanged)='onChangeSearch($event)'
+    (inputFocused)='onFocused($event)'
+    historyIdentifier="locations"
+    [itemTemplate]="itemTemplate"
+    [notFoundTemplate]="notFoundTemplate"
+    [ngClass]="{ 'is-invalid': submitted || !location }">
+  </ng-autocomplete>
+
+  <ng-template #itemTemplate let-item>
+    <a [innerHTML]="item.name"></a>
+  </ng-template>
+
+  <ng-template #notFoundTemplate let-notFound>
+    <div [innerHTML]="notFound"></div>
+  </ng-template>
+</div>   
+  <div class="form-group">
+    <label for="detail">Status / Comments</label>
+    <textarea type="text" id="detail" formControlName="detail" class="form-control" placeholder="enter Status / Comments" name="detail"></textarea>
+  </div>
+  <div class="form-group">
+    <button [disabled]="!addForm.valid" class="btn btn-success"><i class="fa fa-floppy-o right"></i>Add</button>
+    <button class="btn btn-basic" style="margin-left:10px" (click)="back()"><i class="fa fa-repeat"></i></button>
+  </div>
+    <div *ngIf="loading"><i class="fa fa-spinner">{{message}}</i></div>
+  </form>
+</div>

@@ -1,0 +1,186 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@media only screen and (max-width: 320px) {
+    body {
+      width: 100%;
+    }
+    .top{
+        min-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+  }
+  .form-control{
+      background-color: #FFFFBF;
+  }
+.username{
+    color:#007bff;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 0 0 0 5px ;
+}
+.right{
+    margin-right: 5px;
+}
+.left{
+    margin-left: 5px;
+}
+.farleft{
+    background-color: white;
+    padding: 6px 3px;
+    border-radius: 8px;
+    border:1px solid #fff;
+}
+.farleft:hover{
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+}
+.table{
+    border-radius: 8px;
+    border:1px outset white;
+    text-align: left;
+}
+.table td{
+    padding: .5rem .1rem;
+    font-weight: bold;
+}
+th{
+    background-color: white; 
+    border: 2px outset white;
+    color: #000;
+    font-size: .9rem;
+    text-shadow: 1px 1px 1px grey;
+    width: 22%;
+}
+th.less-width{
+    width:12%;
+}
+label{
+    margin-bottom: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+.cursor{
+    cursor: pointer;
+}
+.col-sort{
+    float: right;
+}
+td{
+    /* background-color: white;  */
+    border: 2px outset white;
+}
+span{
+    float: right;
+}
+.welcome{
+    background-color: white;
+    border-radius: 4px;
+}
+.nothing{
+    padding:3px 10px;
+    display: inline-block;
+}
+.log{
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.alignright{
+    text-align: right;
+    
+}
+.alignleft{
+    text-align: left;
+    margin-bottom: 10px;
+    }
+    .top{
+        border:1px solid white;
+        padding:3px;
+        border-radius: 10px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #F8F8FF;
+    }
+.listtop{
+    border:1px solid white;
+    padding:10px 40px;
+    background-color: #eee;
+    border-radius: 10px;
+    margin:50px 0; 
+}
+    .login-button{
+        margin-right: 10px;
+    }
+    .error{
+        color: red;
+        font-size: 12px;
+    }
+    .title{
+        background-color: white;
+    }
+    .usernamedisabled{
+        height: 40px;
+        background-color: #eee;
+        border: 2px solid #ddd;
+        text-align: left;
+        padding: 5px 10px;
+        border-radius: 3px;
+    }
+    .heavy { font: bold 8 sans-serif; }
+    .Rrrrr { fill: red; text-shadow: 1px 1px 1px grey;}
+    .icon-size-edit{
+        font-size:20px;
+    }
+    .table-header{
+        font-size:25px;
+        margin-right: 10px;
+    }
+    .spinner-size{
+        font-size: 2rem;
+        margin-bottom: -50% 35%;
+        z-index: 999;
+    }
+    .icon-size-edit-header-money{
+        font-size:12px;
+    }
+    .icon-size-delete{
+        font-size:20px;
+    }
+    .watch{
+        float: left;
+    }
+    #watch{
+        height: 2em;
+    }
+    #danger{
+        color: red;
+    }
+    .search{
+        margin-top: 10px;
+    }
+    .autocomplete-container .input-container input{
+        background-color: #FFFFBF !important;
+        font-size: 16px !important;
+        text-align: left;
+    }
+    .suggestions-container.is-visible{
+        text-align: left !important;
+    }
+    input#date_input{
+        background-color: white;
+        font-size: 1em;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;  
+    }
+    .ngx-datepicker-input{
+        background-color: #FFFFBF;
+    }
+    .isDisabled {
+        color: currentColor;
+        pointer-events: none;
+        cursor:none;
+      }
