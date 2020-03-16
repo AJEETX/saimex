@@ -8,7 +8,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "postinstall": "ng build --output-path seven11  --aot --prod",
+    "postinstall": "ng build --output-path saimex  --aot --prod",
     "e2e": "ng e2e"
   },
   "private": true,
