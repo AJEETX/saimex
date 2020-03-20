@@ -36,13 +36,12 @@ export class AddCandidateComponent implements OnInit {
         firstname: ['', Validators.required],
         lastname: ['', Validators.required],
         username: ['', Validators.required],
-        password: ['', Validators.required],
         location: [null, Validators.required]
       });
     }
     }
   ngOnInit() {
-    this.authservice.logout();
+    // this.authservice.logout();
   }
     get f() { return this.registerForm.controls; }
     onSubmit() {
@@ -54,16 +53,19 @@ export class AddCandidateComponent implements OnInit {
       }
       this.spinnerService.show()
       this.loading = true;
-     this.authservice.register(this.f.firstname.value,this.f.lastname.value,this.f.username.value, this.f.location.value.name,
-      this.f.password.value)
+     this.authservice.create(this.f.firstname.value,this.f.lastname.value,this.f.username.value, this.f.location.value.name)
       .subscribe(data=>{
         console.log(data)
         this.spinnerService.hide()
-        this.router.navigate(['login'])
+        this.router.navigate([''])
       },
       error=>{
         if(error && error.status==401){
           this.error = error;
+        }
+        else if(error && error.error){
+          this.error=error
+          this.haserror=true
         }else{
           this.error={
             error:'Server error'

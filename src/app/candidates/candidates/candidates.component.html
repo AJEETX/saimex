@@ -62,20 +62,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of users | orderBy: key : reverse | paginate: { itemsPerPage: 20, currentPage: p }; let i = index" [ngStyle]="setMyStyles(product) ">
-          <td style="display:none">{{product.userId}}</td>
-          <td>{{product.username}}</td>
-          <!-- <td>{{product.eventNo}}</td> -->
-          <td>{{product.firstName }}</td>
-          <td>{{product.location}}</td>
-          <td>{{product.lastName}}</td>
-          <!-- <td>{{product.time}}</td> -->
+          <tr *ngFor="let user of users | orderBy: key : reverse | paginate: { itemsPerPage: 20, currentPage: p }; let i = index" [ngStyle]="setMyStyles(user) ">
+          
+        <ng-container *ngIf="username==user.createdBy">
+          <td style="display:none">{{user.userId}}</td>
+          <td>{{user.username}}</td>
+          <!-- <td>{{user.eventNo}}</td> -->
+          <td>{{user.firstName }}</td>
+          <td>{{user.location}}</td>
+          <td>{{user.lastName}}</td>
+          <!-- <td>{{user.time}}</td> -->
           <td>
-            <span *ngIf="userId==product.userId">
-            <i class="fa fa-pencil-square-o icon-size-edit cursor" aria-hidden="true" (click)="editProduct(product)"></i> |
-            <i class="fa fa-trash-o left icon-size-delete cursor" (click)="deleteProduct(product)" ></i>
+            <span>
+            <i class="fa fa-pencil-square-o icon-size-edit cursor" aria-hidden="true" (click)="editProduct(user)"></i> |
+            <i class="fa fa-trash-o left icon-size-delete cursor" (click)="deleteProduct(user)" ></i>
           </span>
-          </td>        
+          </td>
+        </ng-container>         
         </tbody>
   </table>
   <pagination-controls (pageChange)="p = $event"></pagination-controls>

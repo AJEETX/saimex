@@ -10,8 +10,12 @@ export class UserService {
   baseUrl=Config.baseUrl+"Users"
   constructor(private http:HttpClient) {
    }
-  getUsers(term?:string){
-    var users= this.http.get<User[]>(this.baseUrl)
+  getUsers(query?:string){
+    var userid=localStorage.getItem('username')
+    if(query==""){
+      query="undefined"
+    }
+    var users= this.http.get<User[]>(this.baseUrl+ '/'+userid+'/'+query);
     return users;
   }
 }

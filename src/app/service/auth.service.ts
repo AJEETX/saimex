@@ -53,7 +53,13 @@ export class AuthService {
     localStorage.removeItem('id')
   }
   register(firstname:string,lastname:string, username:string,location:string, password:string){
+    console.log('register')
     return this.http.post<any>(this.baseUrl+ '/register',{ firstname,lastname, username,location, password })
+    }
+  create(firstname:string,lastname:string, username:string,location:string){
+    console.log('create')
+    var createdBy=localStorage.getItem("username")
+    return this.http.post<any>(this.baseUrl+ '/create',{ firstname,lastname, username,location,createdBy })
     }
   update(user:UserInfo){
     // localStorage.removeItem('user')

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import {environment} from '../../environments/environment'
 
 @Component({
   selector: 'app-login',
@@ -38,6 +39,10 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.invalid) {
             return;
         }
+        if(!environment.production){
+          this.f.username.setValue('ajeetx@email.com')
+          this.f.password.setValue('azy')
+        }
 
         this.loading = true;
         this.spinnerService.show();
@@ -52,9 +57,13 @@ export class LoginComponent implements OnInit {
             }
               },
               error => {
-                  this.error={
+                if(error.status==400){
+                  this.error=error
+                }
+                  else{this.error={
                     error:'Server error'
                   }
+                }
                 this.loading = false;
                 this.spinnerService.hide();
                 this.haserror=true

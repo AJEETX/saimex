@@ -17,6 +17,7 @@ export class CandidatesComponent implements OnInit {
   users:User[]
   user:string
   userId:string
+  username:string
   admin:boolean
   loading=false
   error :any={error:''};
@@ -42,6 +43,8 @@ export class CandidatesComponent implements OnInit {
      this.user=localStorage.getItem('user')
       if(localStorage.getItem('userId'))
       this.userId=localStorage.getItem('userId')
+      if(localStorage.getItem("username"))
+      this.username=localStorage.getItem("username")
       this.userService.getUsers("")
       .subscribe(data=>{
           this.users=data

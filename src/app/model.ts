@@ -18,6 +18,7 @@ export class User{
     FirstName:string
     LastName:string
     Location:string
+    CreatedBy:string
     Token:string 
 }
 export class UserInfo{
