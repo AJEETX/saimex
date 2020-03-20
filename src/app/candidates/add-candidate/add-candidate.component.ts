@@ -1,11 +1,10 @@
-import { User } from '../../model';
 import { AuthService } from './../../service/auth.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import {DisableControlDirective} from '../../DisableControlDirective'
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import {DataService} from '../../service/data.service'
 
 @Component({
   selector: 'app-add-candidate',
@@ -19,13 +18,15 @@ export class AddCandidateComponent implements OnInit {
   user:string
   userId:string
   location=''
+  locations:any
   haserror=false
   error :any={error:''};
 
   constructor( private formBuilder: FormBuilder, private route: ActivatedRoute, 
     private router: Router,private spinnerService: Ng4LoadingSpinnerService,
-    private authservice:AuthService) { 
+    private authservice:AuthService,private dataService:DataService) { 
       if(localStorage.getItem('user')){
+        this.locations=dataService.locations
         this.user=localStorage.getItem('user')
         this.location=localStorage.getItem('location')
         if(localStorage.getItem('userId'))
@@ -75,50 +76,7 @@ export class AddCandidateComponent implements OnInit {
     })
     }
     keyword = 'name';
-    public states = [
-      {
-        id: 1,
-        name: 'ACT',
-      },
-      {
-        id: 2,
-        name: 'NSW',
-      },
-      {
-        id: 3,
-        name: 'VIC',
-      },
-      {
-        id: 4,
-        name: 'QLD',
-      },
-      {
-        id: 5,
-        name: 'SA',
-      },
-      {
-        id: 6,
-        name: 'WA',
-      },
-      {
-        id: 7,
-        name: 'NT',
-      },
-      {
-        id: 8,
-        name: 'TAS',
-      }
-    ];
-    public locations=[
-      {
-        id: 1,
-        name: 'Charlestown',
-      },
-      {
-        id: 2,
-        name: 'New Castle',
-      }
-    ];
+    
       selectEvent(item) {
         this.registerForm.controls.location.setValue(item.name);
     }

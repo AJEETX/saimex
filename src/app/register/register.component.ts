@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-
+import {DataService} from '../service/data.service'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -17,11 +17,13 @@ export class RegisterComponent implements OnInit {
   location=''
   haserror=false
   error :any={error:''};
+  locations:any
   @ViewChild('auto') auto;
 
   constructor( private formBuilder: FormBuilder, private route: ActivatedRoute, 
     private router: Router,private spinnerService: Ng4LoadingSpinnerService,
-    private authservice:AuthService) { 
+    private authservice:AuthService,private dataService:DataService) { 
+      this.locations=dataService.locations;
       this.registerForm = this.formBuilder.group({
         firstname: ['', Validators.required],
         lastname: ['', Validators.required],
@@ -99,16 +101,7 @@ export class RegisterComponent implements OnInit {
         name: 'TAS',
       }
     ];
-    public locations=[
-      {
-        id: 1,
-        name: 'Charlestown',
-      },
-      {
-        id: 2,
-        name: 'New Castle',
-      }
-    ];
+    
       selectEvent(item) {
         this.registerForm.controls.location.setValue(item.name);
     }

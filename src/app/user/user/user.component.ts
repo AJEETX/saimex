@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {DisableControlDirective} from '../../DisableControlDirective'
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import {DataService} from '../../service/data.service'
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -20,16 +22,18 @@ userdisabled=true;
 username:string
 keyword = 'name';
 location=''
+locations:any
 error :any={error:''};
 haserror=false
 disableControl:DisableControlDirective
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, 
     private router: Router,private spinnerService: Ng4LoadingSpinnerService,
-    private authservice:AuthService) { 
+    private authservice:AuthService,private dataService:DataService) { 
       if(localStorage.getItem('user') && localStorage.getItem('username')){
       this.user=localStorage.getItem('user')
       this.spinnerService.show();
       this.username=localStorage.getItem('username')
+      this.locations=dataService.locations
         this.authservice.getUserById()
          .subscribe(data=>{
            this.userForm.setValue(data)
@@ -86,16 +90,7 @@ disableControl:DisableControlDirective
       this.spinnerService.hide()
       });
   }
-  public locations=[
-    {
-      id: 1,
-      name: 'Charlestown',
-    },
-    {
-      id: 2,
-      name: 'New Castle',
-    }
-  ];
+ 
     selectEvent(item) {
       this.userForm.controls.location.setValue(item.name);
   }
