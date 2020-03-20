@@ -1,0 +1,79 @@
+<div class="top">
+  <i *ngIf="haserror" class="fa fa-warning error">{{error.error}}</i>
+  <div class="alignright">
+    <div class="nothing">  
+    </div>
+    <div class="welcome log nothing"> Welcome
+        <i class="fa fa-quote-left right left"></i>
+        <a [routerLink]="['/user']" class="farleft" >
+          {{user}}
+        </a>
+        <i class="fa fa-quote-right left"></i>
+      </div>
+  <div class="log">
+    <a [routerLink]="['/login']" class="farleft" ><i class="fa fa-power-off right"></i>Logout</a>
+  </div>
+  <svg viewBox="0 0 240 30" xmlns="http://www.w3.org/2000/svg">
+    <style>
+       .Rrrrr { fill: red;text-shadow: 1px 1px 1px grey; }
+    </style>
+     <text x="60" y="15" class="Rrrrr">Add Candidate !</text>
+  </svg>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <label for="firstname">First name</label>
+          <input type="text" formControlName="firstname" class="form-control" 
+          [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" placeholder="first name"/>
+      </div>
+      <div class="form-group">
+          <label for="lastname">Last Name</label>
+          <input type="text" formControlName="lastname" class="form-control" 
+          [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" placeholder="last name"/>
+      </div>
+      <div class="form-group">
+          <label for="location">Location</label>
+          <ng-autocomplete
+          [data]="locations"
+          [searchKeyword]="keyword"
+          formControlName="location"
+          placeHolder="select location"
+          (selected)='selectEvent($event)'
+          (inputChanged)='onChangeSearch($event)'
+          (inputFocused)='onFocused($event)'
+          historyIdentifier="locations"
+          [itemTemplate]="itemTemplate"
+          [notFoundTemplate]="notFoundTemplate"
+          [ngClass]="{ 'is-invalid': submitted || !location }">
+        </ng-autocomplete>
+      
+        <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item.name"></a>
+        </ng-template>
+      
+        <ng-template #notFoundTemplate let-notFound>
+          <div [innerHTML]="notFound"></div>
+        </ng-template>
+      </div>   
+      <!-- <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" formControlName="state" class="form-control" 
+          [ngClass]="{ 'is-invalid': submitted && f.state.errors }" placeholder="state"/>
+      </div>     -->
+
+    <div class="form-group">
+        <label for="username">Email</label>
+        <input type="text" formControlName="username" class="form-control" 
+        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="email"/>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" 
+        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="password"/>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading || registerForm.invalid " class="btn btn-primary right-margin"><i class="fa fa-floppy-o right-margin"></i>Add Client </button> &nbsp;
+        <a [routerLink]="['/']">Cancel</a>
+        </div>
+  </form>
+  </div>
+</div>

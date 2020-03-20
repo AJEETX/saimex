@@ -13,6 +13,7 @@ export class Vehicle {
 }
 export class User{
     Id:number
+    userId:string
     Username:string
     FirstName:string
     LastName:string
@@ -21,6 +22,7 @@ export class User{
 }
 export class UserInfo{
     Id:string
+    userId:string
     username:string
     firstname:string
     lastname:string

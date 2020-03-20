@@ -24,6 +24,9 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 import { DatePipe, CurrencyPipe } from '@angular/common';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { CandidatesComponent } from './candidates/candidates/candidates.component';
+import { AddCandidateComponent } from './candidates/add-candidate/add-candidate.component';
+import { EditCandidateComponent } from './candidates/edit-candidate/edit-candidate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,10 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     RegisterComponent,
     LoginComponent,
     UserComponent,
-    DisableControlDirective
+    DisableControlDirective,
+    CandidatesComponent,
+    AddCandidateComponent,
+    EditCandidateComponent
     
   ],
   imports: [
