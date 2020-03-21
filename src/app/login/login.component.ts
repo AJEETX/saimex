@@ -48,9 +48,13 @@ export class LoginComponent implements OnInit {
         this.spinnerService.show();
         this.authservice.login(this.f.username.value, this.f.password.value)
           .subscribe( data => {
+            var isAdmin=data.roles.filter(d=>d.name=='Admin').length==1
             if(this.authservice.loggedIn())
             {
                 this.router.navigate([this.returnUrl]);
+            }
+            else if(!isAdmin){
+              this.router.navigate(['view-candidate']);
             }
             else{
               this.router.navigate(['login']);

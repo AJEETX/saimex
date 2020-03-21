@@ -27,6 +27,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { CandidatesComponent } from './candidates/candidates/candidates.component';
 import { AddCandidateComponent } from './candidates/add-candidate/add-candidate.component';
 import { EditCandidateComponent } from './candidates/edit-candidate/edit-candidate.component';
+import { ViewCandidateComponent } from './candidates/view-candidate/view-candidate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { EditCandidateComponent } from './candidates/edit-candidate/edit-candida
     DisableControlDirective,
     CandidatesComponent,
     AddCandidateComponent,
-    EditCandidateComponent
+    EditCandidateComponent,
+    ViewCandidateComponent
     
   ],
   imports: [
